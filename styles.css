@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Jua&display=swap');
+
+body{
+    height: 100%;
+    width: 100%;
+    background-color: #ffd1e2;
+}
+
+img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.menu-card {
+    margin: 10% auto;
+    width: 25%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    border: solid #89666b;
+    background-color: hsl(7, 69%, 97%);
+    border-width: 10px;
+    border-radius: 40px;
+    padding: 5% 0.5%;
+    height: 70%;
+}
+
+.btn {
+    font-family: "Jua", sans-serif;
+    background-color: white;
+    text-decoration: none;
+    font-size:22px;
+    color: #89666b;
+    text-align: center;
+    align-self: center;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    border: 5px solid hsl(351, 15%, 47%);
+    border-radius: 18px;
+    margin-bottom: 2%;
+}
+.btn:hover{
+    background-color: #ffd1e2;
+    color: hsl(351, 15%, 30%);
+    border-color: hsl(351, 15%, 30%);
+
+    transition-duration: 10s;
+    transition-behavior: ease-in-out;
+    transition-duration: .25s;
+}
+.btn-box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+p {
+    font-family: "Jua", sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    color: #89666b;
+}
+
+
+/*----- CANVAS FORMATTING -----*/
+.canvas-container{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7%;
+}
+canvas {
+    display: block;
+    border: 8px solid #89666b;
+    border-radius: 30px;
+    background-color: hsl(7, 69%, 97%);
+}

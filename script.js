@@ -9,6 +9,7 @@ canvas.height = 600; // Adjust based on your desired size
 
 //--------------------//
 
+
 // Basket Properties
 const basket = {
     x: canvas.width / 2 - 100,
@@ -76,8 +77,8 @@ function FallingItem() {
 
     this.x = Math.random() * (canvas.width - 100);  // Random x position
     this.y = 0;  // Start at the top
-    this.width = 100;  // Default width
-    this.height = 100; // Default height
+    this.width =50;  // Default width
+    this.height = 60; // Default height
     this.speed = 2 + Math.random() * 3;  // Random falling speed
     this.type = randomType;
     this.img = new Image();
@@ -119,13 +120,14 @@ function updateItems() {
         ) {
             items.splice(i, 1);  // Remove item if caught
             i--;  // Adjust index after removal
-            score++;
+            score++; // Increment score
             console.log('Item caught! Current score: ' + score);
         }
         // Remove item if it goes past the bottom
         if (item.y > canvas.height) {
             items.splice(i, 1);  // Remove item
             i--;  // Adjust index after removal
+            missedItems++; //Increment missed items 1-5
             console.log('Item missed! Missed items: ' + missedItems);
 
             if (missedItems >= 5) {
@@ -140,7 +142,7 @@ function updateItems() {
 setInterval(function() {
     items.push(new FallingItem());  // Add a new item to the array
     console.log('New item spawned!');
-}, 2500); // Spawn items every 2.5 seconds
+}, 2000); // Spawn items every 2 seconds
 
 // Game loop
 function gameLoop() {
@@ -149,22 +151,22 @@ function gameLoop() {
     draw();  // Redraw everything
     requestAnimationFrame(gameLoop);  // Keep the loop running
 }
+//-- Basket Movement ---------------------------------------------------------------------------------------------- 
+    // Handle keydown event
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            basket.direction = -1; // Move left
+        } else if (e.key === 'ArrowRight') {
+            basket.direction = 1; // Move right
+        }
+    });
 
-// Handle keydown event
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        basket.direction = -1; // Move left
-    } else if (e.key === 'ArrowRight') {
-        basket.direction = 1; // Move right
-    }
-});
-
-// Handle keyup event
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        basket.direction = 0; // Stop moving
-    }
-});
+    // Handle keyup event
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            basket.direction = 0; // Stop moving
+        }
+    });
 
 // Start the game loop once the basket image is loaded
 basket.img.onload = function () {
